@@ -7,6 +7,24 @@ Naipe::Naipe(int valor, QString palo, QString Url)
     this->palo = palo;
 
     setPos(50, 50);
+    setAcceptHoverEvents(true);
+}
+
+void Naipe::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+    setScale(60);
+}
+
+void Naipe::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+    setScale(50);
+}
+
+void Naipe::setScale(float scale)
+{
+    //this->setTransform(QTransform::fromScale(scale, scale), true);
+    setPixmap(this->pixmap().scaledToHeight(scale));
+
 }
 
 int Naipe::getValor() const

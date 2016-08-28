@@ -16,7 +16,17 @@ Controll::Controll()
     setScene(scene);
 
     Naipe * esteNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/2_of_spades.png");
+    esteNaipe->setScale(50);
     scene->addItem(esteNaipe);
 
     this->show();
 }
+
+/*
+TO DO!
+
+- cambiar la resolucion a los naipes!
+- conseguir un tablero
+
+*/
+
