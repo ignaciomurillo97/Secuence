@@ -5,7 +5,8 @@
 #include <QGraphicsSceneMouseEvent>
 
 #include <QGraphicsPixmapItem>
-#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsSceneHoverEvent>
+#include <QMouseEvent>
 //#include <QGraphicsTextItem>
 
 class Naipe : public QObject, public QGraphicsPixmapItem
@@ -16,17 +17,17 @@ public:
 
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
     void setScale (float scale) ;
 
-    int getValor() const;
-    void setValor(int value);
+    int getValor() const;    
 
-    QString getPalo() const;
-    void setPalo(const QString &value);
+    QString getPalo() const;   
 
 private:
     int valor;
+    bool placed;
     QString palo;
 };
 

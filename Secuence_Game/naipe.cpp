@@ -1,18 +1,22 @@
 #include "naipe.h"
+#include "controll.h"
+extern Controll* game;
 
 Naipe::Naipe(int valor, QString palo, QString Url)
 {
     setPixmap(Url);
     this->valor = valor;
     this->palo = palo;
+    this->placed = true;
 
     setPos(50, 50);
     setAcceptHoverEvents(true);
+    setFlag(QGraphicsItem::ItemIsFocusable);
 }
 
 void Naipe::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
-    setScale(60);
+    setScale(60);   
 }
 
 void Naipe::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
@@ -20,11 +24,21 @@ void Naipe::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
     setScale(50);
 }
 
+void Naipe::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{   
+    if (event->button() == Qt::LeftButton)
+    {
+        if (placed)
+        {
+            game->pickupCard(this);
+            placed = false;
+        }
+    }
+}
+
 void Naipe::setScale(float scale)
 {
-    //this->setTransform(QTransform::fromScale(scale, scale), true);
     setPixmap(this->pixmap().scaledToHeight(scale));
-
 }
 
 int Naipe::getValor() const
@@ -32,18 +46,10 @@ int Naipe::getValor() const
     return valor;
 }
 
-void Naipe::setValor(int value)
-{
-    valor = value;
-}
 
 QString Naipe::getPalo() const
 {
     return palo;
 }
 
-void Naipe::setPalo(const QString &value)
-{
-    palo = value;
-}
 

@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/img">
         <file>Recurcion_1.png</file>
+        <file>Fondo.png</file>
     </qresource>
     <qresource prefix="/Cartas">
         <file>naipes/2_of_clubs.png</file>

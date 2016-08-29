@@ -14,11 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     controll.cpp \
-    naipe.cpp
+    naipe.cpp \
+    tablero.cpp
 
 HEADERS  += \
     controll.h \
-    naipe.h
+    naipe.h \
+    tablero.h
 
 FORMS    +=
 
