@@ -2,5 +2,5 @@
 
 Tablero::Tablero()
 {
-
+    cardMatrix = new Naipe * [height];
 }

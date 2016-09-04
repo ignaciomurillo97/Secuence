@@ -18,13 +18,12 @@ Controll::Controll()
     setScene(scene); // asigna la escena
 
     // crea un naipes (PRUEBA)
-    Naipe * esteNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/2_of_spades.png");
+    Naipe * esteNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/2_of_spades.png", 50, 50);
     esteNaipe->setScale(50);
     scene->addItem(esteNaipe);
 
-    Naipe * esteOtroNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/5_of_spades.png");
+    Naipe * esteOtroNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/5_of_spades.png", 100, 50);
     esteOtroNaipe->setScale(50);
-    esteOtroNaipe->setPos(100, 50);
     scene->addItem(esteOtroNaipe);
 
 
@@ -36,8 +35,8 @@ Controll::Controll()
 
 void Controll::pickupCard(Naipe *naipe)
 {
-    this->draggingItem = naipe;
-    qDebug() << "el naipe es un" << draggingItem->getValor();
+    if (draggingItem == NULL) this->draggingItem = naipe;
+    // qDebug() << "el naipe es un" << draggingItem->getValor();
 }
 
 /*

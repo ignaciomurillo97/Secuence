@@ -13,7 +13,7 @@ class Naipe : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Naipe(int valor, QString palo, QString Url);
+    Naipe(int valor, QString palo, QString Url, int posX, int posY);
 
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);

@@ -15,12 +15,16 @@ TEMPLATE = app
 SOURCES += main.cpp \
     controll.cpp \
     naipe.cpp \
-    tablero.cpp
+    tablero.cpp \
+    deckstack.cpp \
+    objnape.cpp
 
 HEADERS  += \
     controll.h \
     naipe.h \
-    tablero.h
+    tablero.h \
+    deckstack.h \
+    objnape.h
 
 FORMS    +=
 
