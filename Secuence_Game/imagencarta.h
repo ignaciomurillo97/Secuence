@@ -2,12 +2,15 @@
 #define IMAGENCARTA_H
 
 
-#include <QBrush>
-#include <QGraphicsSceneMouseEvent>
 
-#include <QGraphicsPixmapItem>
+#include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneHoverEvent>
+#include <QGraphicsPixmapItem>
 #include <QMouseEvent>
+#include <QTransform>
+#include <QBrush>
+
+
 
 class ImagenCarta : public QObject, public QGraphicsPixmapItem
 {
@@ -18,6 +21,7 @@ public:
     int getValor() const;
     QString getPalo() const;
     void setScale (float scale) ;
+
 
 protected:
     int valor;

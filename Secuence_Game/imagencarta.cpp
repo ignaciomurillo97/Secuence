@@ -27,3 +27,4 @@ void ImagenCarta::setScale(float scale)
 {
     setPixmap(this->pixmap().scaledToHeight(scale));
 }
+

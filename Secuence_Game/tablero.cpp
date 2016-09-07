@@ -28,8 +28,9 @@ void Tablero::llenarTablero(QGraphicsScene * scene, int offsetX, int offsetY)
         for (int x = 0; x < width; x++)
         {
             ImagenCarta * cartaActual =
-                    new ImagenCarta(1, "espadas", ":/Cartas/naipes/ace_of_spades.png", x * 50 + offsetX, y * 51 + offsetY);
+                    new ImagenCarta(1, "espadas", ":/Cartas/naipes/ace_of_spades.png", x * 55 + offsetX, y * 40 + offsetY);
             cartaActual->setScale(50);
+            cartaActual->setRotation(90);
             setValue (x, y, cartaActual);
             scene->addItem(cartaActual);
         }
