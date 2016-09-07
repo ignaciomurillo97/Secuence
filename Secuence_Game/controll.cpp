@@ -17,6 +17,10 @@ Controll::Controll()
     setFixedSize(1200, 600); // asigna el tamano del "view"
     setScene(scene); // asigna la escena
 
+    // crear un tablero
+    tableroJuego = new Tablero();
+    tableroJuego->llenarTablero(scene, 100, 100);
+
     // crea un naipes (PRUEBA)
     Naipe * esteNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/2_of_spades.png", 50, 50);
     esteNaipe->setScale(50);
@@ -24,8 +28,7 @@ Controll::Controll()
 
     Naipe * esteOtroNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/5_of_spades.png", 100, 50);
     esteOtroNaipe->setScale(50);
-    scene->addItem(esteOtroNaipe);
-
+    scene->addItem(esteOtroNaipe);    
 
     // inicializa el draggableItem como vacio
     draggingItem = NULL;
@@ -39,12 +42,10 @@ void Controll::pickupCard(Naipe *naipe)
     // qDebug() << "el naipe es un" << draggingItem->getValor();
 }
 
-/*
-void Controll::mousePressEvent(QMouseEvent *event)
+QGraphicsScene* Controll::getScene()
 {
-    qDebug() << "Mouse Press en Controll.";
+    return scene;
 }
-*/
 
 void Controll::mouseMoveEvent(QMouseEvent *event)
 {

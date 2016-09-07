@@ -1,29 +1,39 @@
 #include "tablero.h"
 
-extern Controll * game;
+//extern Controll * game;
 
 Tablero::Tablero()
 {
-    cardMatrix = new ImagenCarta * [width * height];
+    cardMatrix = new ImagenCarta ** [width];
+    for (int i = 0; i < width; i++)
+    {
+        cardMatrix[i] = new ImagenCarta* [height];
+    }
 }
 
 ImagenCarta *Tablero::getValue(int x, int y)
 {
-    return cardMatrix[y * width + x];
+    return cardMatrix[x][y];
 }
 
 void Tablero::setValue(int x, int y, ImagenCarta *pNaipe)
 {
-    cardMatrix[y * width + x] = pNaipe;
+    cardMatrix[x][y] = pNaipe;
 }
 
-void Tablero::llenarTablero()
+void Tablero::llenarTablero(QGraphicsScene * scene, int offsetX, int offsetY)
 {
     for (int y = 0; y < height; y++)
     {
         for (int x = 0; x < width; x++)
         {
-            setValue (x, y, new ImagenCarta(1, "espadas", ":/Cartas/naipes/ace_of_spades.png", x * 50, y * 50));
+            ImagenCarta * cartaActual =
+                    new ImagenCarta(1, "espadas", ":/Cartas/naipes/ace_of_spades.png", x * 50 + offsetX, y * 51 + offsetY);
+            cartaActual->setScale(50);
+            setValue (x, y, cartaActual);
+            scene->addItem(cartaActual);
         }
     }
 }
+
+

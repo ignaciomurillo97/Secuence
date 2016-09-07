@@ -9,7 +9,6 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneHoverEvent>
 #include <QMouseEvent>
-//#include <QGraphicsTextItem>
 
 class Naipe : public ImagenCarta
 {
@@ -20,8 +19,6 @@ public:
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
-
-    void setScale (float scale) ;
 
 
 private:

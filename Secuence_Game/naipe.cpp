@@ -29,10 +29,6 @@ void Naipe::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
 }
 
-void Naipe::setScale(float scale)
-{
-    setPixmap(this->pixmap().scaledToHeight(scale));
-}
 
 
 

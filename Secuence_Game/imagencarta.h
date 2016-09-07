@@ -8,7 +8,6 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneHoverEvent>
 #include <QMouseEvent>
-//#include <QGraphicsTextItem>
 
 class ImagenCarta : public QObject, public QGraphicsPixmapItem
 {
@@ -17,8 +16,8 @@ public:
     ImagenCarta(int valor, QString palo, QString Url, int posX, int posY);
 
     int getValor() const;
-
     QString getPalo() const;
+    void setScale (float scale) ;
 
 protected:
     int valor;

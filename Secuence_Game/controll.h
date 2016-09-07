@@ -11,6 +11,7 @@
 // clases del juego
 #include "naipe.h"
 #include "tablero.h"
+#include "imagencarta.h"
 
 class Controll : public QGraphicsView
 {
@@ -18,12 +19,13 @@ public:
     Controll();
 
     void pickupCard (Naipe * naipe);
-    //void mousePressEvent(QMouseEvent * event);
+    QGraphicsScene* getScene();
 
     void mouseMoveEvent(QMouseEvent *event);
 private:
     QGraphicsScene * scene;
     Naipe * draggingItem;
+    Tablero * tableroJuego;
 };
 
 #endif // CONTROLL_H
