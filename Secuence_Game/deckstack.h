@@ -3,12 +3,15 @@
 
 #include "naipe.h"
 
-#define MAX_ELEMENTS 1024
+#define MAX_ELEMENTS 54
 
 class DeckStack
 {
 public:
-    DeckStack(int max = MAX_ELEMEMTS);
+    DeckStack(int max = MAX_ELEMENTS);
+    void push (Naipe * naipe);
+    Naipe * pop ();
+    Naipe * topValue();
 
 private:
     Naipe** arrayNaipes;

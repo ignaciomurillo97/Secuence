@@ -10,6 +10,7 @@
 
 // clases del juego
 #include "naipe.h"
+#include "tablero.h"
 
 class Controll : public QGraphicsView
 {

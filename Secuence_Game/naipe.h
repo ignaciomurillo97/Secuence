@@ -1,6 +1,8 @@
 #ifndef NAIPE_H
 #define NAIPE_H
 
+#include "imagencarta.h"
+
 #include <QBrush>
 #include <QGraphicsSceneMouseEvent>
 
@@ -9,7 +11,7 @@
 #include <QMouseEvent>
 //#include <QGraphicsTextItem>
 
-class Naipe : public QObject, public QGraphicsPixmapItem
+class Naipe : public ImagenCarta
 {
     Q_OBJECT
 public:
@@ -21,14 +23,9 @@ public:
 
     void setScale (float scale) ;
 
-    int getValor() const;    
-
-    QString getPalo() const;   
 
 private:
-    int valor;
-    bool placed;
-    QString palo;
+
 };
 
 #endif // NAIPE_H

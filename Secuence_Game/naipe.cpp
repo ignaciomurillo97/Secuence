@@ -3,15 +3,8 @@
 extern Controll* game;
 
 Naipe::Naipe(int valor, QString palo, QString Url, int posX, int posY)
+ : ImagenCarta(valor, palo, Url, posX, posY)
 {
-    setPixmap(Url);
-    this->valor = valor;
-    this->palo = palo;
-    this->placed = true;
-
-    setPos(posX, posY);
-    setAcceptHoverEvents(true);
-    setFlag(QGraphicsItem::ItemIsFocusable);
 }
 
 void Naipe::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
@@ -41,15 +34,5 @@ void Naipe::setScale(float scale)
     setPixmap(this->pixmap().scaledToHeight(scale));
 }
 
-int Naipe::getValor() const
-{
-    return valor;
-}
-
-
-QString Naipe::getPalo() const
-{
-    return palo;
-}
 
 
