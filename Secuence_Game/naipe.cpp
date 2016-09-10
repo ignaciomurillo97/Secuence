@@ -4,8 +4,11 @@ extern Controll* game;
 
 Naipe::Naipe(int valor, QString palo, QString Url, int posX, int posY)
  : ImagenCarta(valor, palo, Url, posX, posY)
-{
-}
+{}
+
+Naipe::Naipe(int valor, QString palo, QString Url)
+ : ImagenCarta(valor, palo, Url)
+{}
 
 void Naipe::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {

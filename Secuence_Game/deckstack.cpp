@@ -1,15 +1,20 @@
 #include "deckstack.h"
 
+#include "controll.h"
+extern Controll * game;
+
 DeckStack::DeckStack(int max)
 {
     arrayNaipes = new Naipe*[max];
-    //arrayNaipes[0] = new Naipe(10, "Espadas", "Esta", 0, 0) ;
+    showingCard = -1;
+    topCard = -1;
     size = 0;
 }
 
 void DeckStack::push(Naipe *naipe)
 {
     arrayNaipes[size] = naipe;
+    topCard = size;
     size ++;
 }
 
@@ -23,6 +28,11 @@ Naipe *DeckStack::pop()
 
 Naipe *DeckStack::topValue()
 {
-    return arrayNaipes[size - 1];
+    return arrayNaipes[topCard];
+}
+
+int DeckStack::getSize() const
+{
+    return size;
 }
 

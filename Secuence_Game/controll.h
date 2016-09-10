@@ -8,24 +8,33 @@
 #include <QMouseEvent>
 #include <QDebug>
 
+
 // clases del juego
 #include "naipe.h"
 #include "tablero.h"
+#include "deckstack.h"
 #include "imagencarta.h"
 
 class Controll : public QGraphicsView
 {
 public:
     Controll();
-
-    void pickupCard (Naipe * naipe);
     QGraphicsScene* getScene();
 
-    void mouseMoveEvent(QMouseEvent *event);
+    void pickupCard (Naipe * naipe);
+    void clickTablero(ImagenCarta * cartaSeleccionada);
+    void colocarCarta ();
+    void devolverCartaAMano ();
+    void llenarMaso(DeckStack * maso);
+
+    void mouseMoveEvent(QMouseEvent *event);   
 private:
     QGraphicsScene * scene;
     Naipe * draggingItem;
+    int draggingItemPosX;
+    int draggingItemPosY;
     Tablero * tableroJuego;
+    DeckStack * maso;
 };
 
 #endif // CONTROLL_H

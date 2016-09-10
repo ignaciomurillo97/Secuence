@@ -21,8 +21,13 @@ Controll::Controll()
     tableroJuego = new Tablero();
     tableroJuego->llenarTablero(scene, 100, 100);
 
+    // crear la pila de naipes
+
+    maso = new DeckStack(108); // fijar la cantidad maxima de elementos a la cantidad de naipes que hay en el juego
+    llenarMaso(maso);
+
     // crea un naipes (PRUEBA)
-    Naipe * esteNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/2_of_spades.png", 50, 50);
+    Naipe * esteNaipe = new Naipe(1, "espadas", ":/Cartas/naipes/ace_of_spades.png", 50, 50);
     esteNaipe->setScale(50);
     scene->addItem(esteNaipe);
 
@@ -38,8 +43,84 @@ Controll::Controll()
 
 void Controll::pickupCard(Naipe *naipe)
 {
-    if (draggingItem == NULL) this->draggingItem = naipe;
-    // qDebug() << "el naipe es un" << draggingItem->getValor();
+    if (draggingItem == NULL)
+    {
+        this->draggingItem = naipe;
+        this->draggingItemPosX = naipe->pos().x();
+        this->draggingItemPosY = naipe->pos().y();
+    }
+}
+
+void Controll::clickTablero(ImagenCarta *cartaSeleccionada)
+{
+    if (draggingItem != NULL)
+    {
+        if (draggingItem->getUrl() == cartaSeleccionada->getUrl())
+        {
+            colocarCarta();
+        }
+        else
+        {
+            devolverCartaAMano();
+        }
+    }
+}
+
+void Controll::colocarCarta()
+{
+    qDebug() << "es la misma carta";
+}
+
+void Controll::devolverCartaAMano()
+{
+    draggingItem->setPos(draggingItemPosX, draggingItemPosY);
+    draggingItem = NULL;
+    qDebug() << "Nope!";
+}
+
+void Controll::llenarMaso(DeckStack * maso)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        QString paloActual = "";
+        switch (i)
+        {
+        case 0:
+            paloActual = "_of_spades.png";
+            break;
+        case 1:
+            paloActual = "_of_clubs.png";
+            break;
+        case 2:
+            paloActual = "_of_diamonds.png";
+            break;
+        case 3:
+            paloActual = "_of_hearts.png";
+            break;
+        }
+
+        for (int j = 1; j < 14; j++)
+        {          
+            QString nombreCarta = ":/Cartas/naipes/";
+            char numstr[2];
+
+            if (j == 1)
+                nombreCarta += "ace";
+            else if (j == 11)
+                nombreCarta += "jacks";
+            else if (j == 12)
+                nombreCarta += "queen";
+            else if (j == 13)
+                nombreCarta += "king";
+            else
+                nombreCarta += itoa(j, numstr, 10);
+
+            nombreCarta += paloActual;
+            Naipe * naipeActual = new Naipe(j, "espadas", nombreCarta);
+            maso->push(naipeActual);
+            //qDebug() << nombreCarta;
+        }
+    }
 }
 
 QGraphicsScene* Controll::getScene()
@@ -51,7 +132,7 @@ void Controll::mouseMoveEvent(QMouseEvent *event)
 {
     if (draggingItem != NULL)
     {
-        draggingItem->setPos(event->x(), event->y());
+        draggingItem->setPos(event->x() + 10, event->y() + 10);
     }
 
     QGraphicsView::mouseMoveEvent(event);

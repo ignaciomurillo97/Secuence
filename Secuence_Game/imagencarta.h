@@ -17,16 +17,21 @@ class ImagenCarta : public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     ImagenCarta(int valor, QString palo, QString Url, int posX, int posY);
+    ImagenCarta(int valor, QString palo, QString Url);
 
     int getValor() const;
     QString getPalo() const;
-    void setScale (float scale) ;
+    QString getUrl();
+    void setScale (float scale);
+    void setPlaced (bool value);
 
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
 protected:
     int valor;
     bool placed;
     QString palo;
+    QString Url;
 };
 
 

@@ -15,6 +15,7 @@ class Naipe : public ImagenCarta
     Q_OBJECT
 public:
     Naipe(int valor, QString palo, QString Url, int posX, int posY);
+    Naipe(int valor, QString palo, QString Url);
 
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
