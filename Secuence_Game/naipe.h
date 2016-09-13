@@ -10,11 +10,12 @@
 #include <QGraphicsSceneHoverEvent>
 #include <QMouseEvent>
 
-class Naipe : public ImagenCarta
+class Card : public CardImage
 {
     Q_OBJECT
 public:
-    Naipe(int valor, QString palo, QString Url, int posX, int posY);
+    Card(QString Url, int posX, int posY);
+    Card(QString Url);
 
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);

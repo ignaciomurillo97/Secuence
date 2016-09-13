@@ -17,16 +17,16 @@ SOURCES += main.cpp \
     naipe.cpp \
     tablero.cpp \
     deckstack.cpp \
-    objnape.cpp \
-    imagencarta.cpp
+    imagencarta.cpp \
+    token.cpp
 
 HEADERS  += \
     controll.h \
     naipe.h \
     tablero.h \
     deckstack.h \
-    objnape.h \
-    imagencarta.h
+    imagencarta.h \
+    token.h
 
 FORMS    +=
 

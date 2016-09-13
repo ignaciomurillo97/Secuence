@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 
 #include "imagencarta.h"
+#include "token.h"
 
 #define width 10
 #define height 10
@@ -12,12 +13,15 @@ class Tablero
 {
 public:
     Tablero();
-    ImagenCarta* getValue(int x, int y);
-    void setValue (int x, int y, ImagenCarta* pNaipe);
-    void llenarTablero(QGraphicsScene * scene, int offsetX, int offsetY);
+    CardImage* getValue(int x, int y);
+    void setValue (int x, int y, CardImage* pNaipe);
+    void fillBoard(QGraphicsScene * scene, int offsetX, int offsetY);
 
+    void addToken (int x, int y, QString owner, QString Url);
+    void removeToken (int x, int y);
 private:
-    ImagenCarta*** cardMatrix;
+    CardImage*** cardMatrix;
+    Token*** tokenMatrix;
 };
 
 #endif // TABLERO_H

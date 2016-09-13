@@ -18,25 +18,25 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_ImagenCarta_t {
+struct qt_meta_stringdata_CardImage_t {
     QByteArrayData data[1];
-    char stringdata0[12];
+    char stringdata0[10];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_ImagenCarta_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_CardImage_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_ImagenCarta_t qt_meta_stringdata_ImagenCarta = {
+static const qt_meta_stringdata_CardImage_t qt_meta_stringdata_CardImage = {
     {
-QT_MOC_LITERAL(0, 0, 11) // "ImagenCarta"
+QT_MOC_LITERAL(0, 0, 9) // "CardImage"
 
     },
-    "ImagenCarta"
+    "CardImage"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_ImagenCarta[] = {
+static const uint qt_meta_data_CardImage[] = {
 
  // content:
        7,       // revision
@@ -52,7 +52,7 @@ static const uint qt_meta_data_ImagenCarta[] = {
        0        // eod
 };
 
-void ImagenCarta::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void CardImage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -60,28 +60,28 @@ void ImagenCarta::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     Q_UNUSED(_a);
 }
 
-const QMetaObject ImagenCarta::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_ImagenCarta.data,
-      qt_meta_data_ImagenCarta,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject CardImage::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_CardImage.data,
+      qt_meta_data_CardImage,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *ImagenCarta::metaObject() const
+const QMetaObject *CardImage::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ImagenCarta::qt_metacast(const char *_clname)
+void *CardImage::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_ImagenCarta.stringdata0))
-        return static_cast<void*>(const_cast< ImagenCarta*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_CardImage.stringdata0))
+        return static_cast<void*>(const_cast< CardImage*>(this));
     if (!strcmp(_clname, "QGraphicsPixmapItem"))
-        return static_cast< QGraphicsPixmapItem*>(const_cast< ImagenCarta*>(this));
+        return static_cast< QGraphicsPixmapItem*>(const_cast< CardImage*>(this));
     return QObject::qt_metacast(_clname);
 }
 
-int ImagenCarta::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int CardImage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)

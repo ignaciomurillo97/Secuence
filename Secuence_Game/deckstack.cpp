@@ -1,28 +1,65 @@
 #include "deckstack.h"
 
+/*
+#include "controll.h"
+extern Controll * game;
+*/
+
 DeckStack::DeckStack(int max)
 {
-    arrayNaipes = new Naipe*[max];
-    //arrayNaipes[0] = new Naipe(10, "Espadas", "Esta", 0, 0) ;
+    cardArray = new Card*[max];
+    showingCard = -1;
+    topCard = -1;
     size = 0;
+    this->max = max;
+    this->posX = 0;
+    this->posY = 0;
 }
 
-void DeckStack::push(Naipe *naipe)
+void DeckStack::push(Card *naipe)
 {
-    arrayNaipes[size] = naipe;
+    cardArray[size] = naipe;
+    topCard = size;
     size ++;
 }
 
-Naipe *DeckStack::pop()
+Card *DeckStack::pop()
 {
-    Naipe *tmp = arrayNaipes[size - 1];
-    arrayNaipes[size - 1] = NULL;
+    Card *tmp = cardArray[size - 1];
+    cardArray[size - 1] = NULL;
     size --;
     return tmp;
 }
 
-Naipe *DeckStack::topValue()
+Card *DeckStack::topValue()
 {
-    return arrayNaipes[size - 1];
+    return cardArray[topCard];
 }
 
+int DeckStack::getSize() const
+{
+    return size;
+}
+
+/*
+void DeckStack::showTopCard()
+{
+    game->showTopDiscardPile(cardArray[topCard]);
+}
+*/
+
+void DeckStack::setPos(int x, int y)
+{
+    this->posX = x;
+    this->posY = y;
+}
+
+int DeckStack::getPosX() const
+{
+    return posX;
+}
+
+int DeckStack::getPosY() const
+{
+    return posY;
+}
