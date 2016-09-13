@@ -2,6 +2,10 @@
 
 Controll::Controll()
 {
+    // inicializa las variables
+    draggingItem = NULL;
+    topDiscardPile = NULL;
+
     // crear una nueva escena
     scene = new QGraphicsScene();
     setSceneRect(0, 0, 1200, 600);
@@ -18,30 +22,32 @@ Controll::Controll()
     setScene(scene); // asigna la escena
 
     // crear un tablero
-    tableroJuego = new Tablero();
-    tableroJuego->llenarTablero(scene, 100, 100);
+    gameBoard = new Tablero();
+    gameBoard->fillBoard(scene, 100, 100);
 
-    // crear la pila de naipes
+    // crear maso de cartas
 
-    maso = new DeckStack(108); // fijar la cantidad maxima de elementos a la cantidad de naipes que hay en el juego
-    llenarMaso(maso);
+    deck = new DeckStack(104); // fijar la cantidad maxima de elementos a la cantidad de naipes que hay en el juego
+    fillDeck(deck);
+
+    // crear el cementerio de cartas
+
+    discardPile = new DeckStack(104);
+    discardPile->setPos(1000, 300);
 
     // crea un naipes (PRUEBA)
-    Naipe * esteNaipe = new Naipe(1, "espadas", ":/Cartas/naipes/ace_of_spades.png", 50, 50);
+    Card * esteNaipe = new Card(":/Cartas/naipes/ace_of_spades.png", 50, 50);
     esteNaipe->setScale(50);
     scene->addItem(esteNaipe);
 
-    Naipe * esteOtroNaipe = new Naipe(2, "espadas", ":/Cartas/naipes/5_of_spades.png", 100, 50);
+    Card * esteOtroNaipe = new Card(":/Cartas/naipes/5_of_spades.png", 100, 50);
     esteOtroNaipe->setScale(50);
-    scene->addItem(esteOtroNaipe);    
-
-    // inicializa el draggableItem como vacio
-    draggingItem = NULL;
+    scene->addItem(esteOtroNaipe);       
 
     this->show(); // Muestra la escena actual
 }
 
-void Controll::pickupCard(Naipe *naipe)
+void Controll::pickupCard(Card *naipe)
 {
     if (draggingItem == NULL)
     {
@@ -51,34 +57,44 @@ void Controll::pickupCard(Naipe *naipe)
     }
 }
 
-void Controll::clickTablero(ImagenCarta *cartaSeleccionada)
+void Controll::clickTablero(CardImage *cartaSeleccionada)
 {
     if (draggingItem != NULL)
     {
         if (draggingItem->getUrl() == cartaSeleccionada->getUrl())
         {
-            colocarCarta();
+            placeCard(draggingItem);
         }
         else
         {
-            devolverCartaAMano();
+            returnCardToHand();
         }
     }
 }
 
-void Controll::colocarCarta()
-{
-    qDebug() << "es la misma carta";
+void Controll::placeCard(Card * newCard)
+{    
+    if (topDiscardPile != NULL)
+    {
+        //qDebug() << "La carta no existe." ;
+        scene->removeItem(topDiscardPile);
+    }
+
+    scene->addItem(newCard);
+    newCard->setPos(discardPile->getPosX(), discardPile->getPosY());
+    qDebug() << discardPile->getPosX() <<", "<< discardPile->getPosY();
+    draggingItem->setPlaced(true);
+    draggingItem = NULL;
 }
 
-void Controll::devolverCartaAMano()
+void Controll::returnCardToHand()
 {
     draggingItem->setPos(draggingItemPosX, draggingItemPosY);
     draggingItem = NULL;
     qDebug() << "Nope!";
 }
 
-void Controll::llenarMaso(DeckStack * maso)
+void Controll::fillDeck(DeckStack * maso)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -116,10 +132,26 @@ void Controll::llenarMaso(DeckStack * maso)
                 nombreCarta += itoa(j, numstr, 10);
 
             nombreCarta += paloActual;
-            Naipe * naipeActual = new Naipe(j, "espadas", nombreCarta);
+            Card * naipeActual = new Card(nombreCarta);
             maso->push(naipeActual);
             //qDebug() << nombreCarta;
         }
+    }
+}
+
+void Controll::showTopDiscardPile(Card *cardToShow) // useless
+{
+    removeDiscardPile();
+    topDiscardPile = cardToShow;
+    scene->addItem(cardToShow);
+}
+
+void Controll::removeDiscardPile() // useless
+{
+    if (topDiscardPile != NULL)
+    {
+        scene->removeItem(topDiscardPile);
+        topDiscardPile = NULL;
     }
 }
 
@@ -138,21 +170,4 @@ void Controll::mouseMoveEvent(QMouseEvent *event)
     QGraphicsView::mouseMoveEvent(event);
 }
 
-
-/*
-    Mover con el mouse:
-    si se hace click a una carta se seleccioneara como movible
-    si se hace click en una posicion valida se coloca la carta
-    si no se hace click en una posicion valida no devuelve a su posicion original
-    si se hace click derecho se devuelve a donde estaba
-*/
-
-
-/*
-TO DO!
-
-- drag and drop
-- crear un tablero
-
-*/
 

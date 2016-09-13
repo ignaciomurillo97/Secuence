@@ -3,7 +3,23 @@
 #include "controll.h"
 extern Controll* game;
 
-ImagenCarta::ImagenCarta(int valor, QString palo, QString Url, int posX, int posY)
+CardImage::CardImage(QString Url, int posX, int posY, int scale, float rotation)
+{
+    setPixmap(Url);
+    this->valor = valor;
+    this->palo = palo;
+    this->placed = true;
+    this->Url = Url;
+
+    this->setScale(scale);
+    this->setRotation(rotation);
+
+    setPos(posX, posY);
+    setAcceptHoverEvents(true);
+    setFlag(QGraphicsItem::ItemIsFocusable);
+}
+
+CardImage::CardImage(QString Url, int posX, int posY)
 {
     setPixmap(Url);
     this->valor = valor;
@@ -16,7 +32,7 @@ ImagenCarta::ImagenCarta(int valor, QString palo, QString Url, int posX, int pos
     setFlag(QGraphicsItem::ItemIsFocusable);
 }
 
-ImagenCarta::ImagenCarta(int valor, QString palo, QString Url)
+CardImage::CardImage(QString Url)
 {
     setPixmap(Url);
     this->valor = valor;
@@ -28,33 +44,33 @@ ImagenCarta::ImagenCarta(int valor, QString palo, QString Url)
     setFlag(QGraphicsItem::ItemIsFocusable);
 }
 
-int ImagenCarta::getValor() const
+int CardImage::getValor() const
 {
     return valor;
 }
 
 
-QString ImagenCarta::getPalo() const
+QString CardImage::getPalo() const
 {
     return palo;
 }
 
-QString ImagenCarta::getUrl()
+QString CardImage::getUrl()
 {
     return Url;
 }
 
-void ImagenCarta::setScale(float scale)
+void CardImage::setScale(float scale)
 {
     setPixmap(this->pixmap().scaledToHeight(scale));
 }
 
-void ImagenCarta::setPlaced(bool value)
+void CardImage::setPlaced(bool value)
 {
     this->placed = value;
 }
 
-void ImagenCarta::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void CardImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     game->clickTablero(this);
     qDebug() << "click tablero !!";

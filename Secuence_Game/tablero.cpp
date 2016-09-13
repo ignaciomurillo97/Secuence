@@ -4,37 +4,48 @@
 
 Tablero::Tablero()
 {
-    cardMatrix = new ImagenCarta ** [width];
+    cardMatrix = new CardImage ** [width];
     for (int i = 0; i < width; i++)
     {
-        cardMatrix[i] = new ImagenCarta* [height];
+        cardMatrix[i] = new CardImage* [height];
+    }
+
+    tokenMatrix = new Token ** [width];
+    for (int i = 0; i < width; i++)
+    {
+        tokenMatrix[i] = new Token* [height];
     }
 }
 
-ImagenCarta *Tablero::getValue(int x, int y)
+CardImage *Tablero::getValue(int x, int y)
 {
     return cardMatrix[x][y];
 }
 
-void Tablero::setValue(int x, int y, ImagenCarta *pNaipe)
+void Tablero::setValue(int x, int y, CardImage *pNaipe)
 {
     cardMatrix[x][y] = pNaipe;
 }
 
-void Tablero::llenarTablero(QGraphicsScene * scene, int offsetX, int offsetY)
+void Tablero::fillBoard(QGraphicsScene * scene, int offsetX, int offsetY)
 {
+
     for (int y = 0; y < height; y++)
     {
         for (int x = 0; x < width; x++)
         {
-            ImagenCarta * cartaActual =
-                    new ImagenCarta(1, "espadas", ":/Cartas/naipes/ace_of_spades.png", x * 55 + offsetX, y * 40 + offsetY);
-            cartaActual->setScale(55);
-            cartaActual->setRotation(90);
+            CardImage * cartaActual =
+                    new CardImage(":/Cartas/naipes/ace_of_spades.png", x * 55 + offsetX, y * 40 + offsetY, 55, 90);
             setValue (x, y, cartaActual);
             scene->addItem(cartaActual);
         }
     }
+
+}
+
+void Tablero::addToken(int x, int y, QString owner, QString Url)
+{
+    tokenMatrix[x][y] = new Token(Url, x, y, owner);
 }
 
 

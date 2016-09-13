@@ -12,12 +12,13 @@
 
 
 
-class ImagenCarta : public QObject, public QGraphicsPixmapItem
+class CardImage : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    ImagenCarta(int valor, QString palo, QString Url, int posX, int posY);
-    ImagenCarta(int valor, QString palo, QString Url);
+    CardImage(QString Url, int posX, int posY, int scale, float rotation);
+    CardImage(QString Url, int posX, int posY);
+    CardImage(QString Url);
 
     int getValor() const;
     QString getPalo() const;

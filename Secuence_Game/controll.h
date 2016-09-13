@@ -21,20 +21,25 @@ public:
     Controll();
     QGraphicsScene* getScene();
 
-    void pickupCard (Naipe * naipe);
-    void clickTablero(ImagenCarta * cartaSeleccionada);
-    void colocarCarta ();
-    void devolverCartaAMano ();
-    void llenarMaso(DeckStack * maso);
+    void pickupCard (Card * naipe);
+    void clickTablero(CardImage * cartaSeleccionada);
+    void placeCard (Card * newCard);
+    void returnCardToHand ();
+    void fillDeck(DeckStack * deck);    
+    void removeDiscardPile();
+    void showTopDiscardPile(Card * cartaAMostrar);
 
-    void mouseMoveEvent(QMouseEvent *event);   
+    void mouseMoveEvent(QMouseEvent *event);
+
 private:
     QGraphicsScene * scene;
-    Naipe * draggingItem;
+    Card * draggingItem;
     int draggingItemPosX;
     int draggingItemPosY;
-    Tablero * tableroJuego;
-    DeckStack * maso;
+    Tablero * gameBoard;
+    DeckStack * deck;
+    DeckStack * discardPile;
+    Card * topDiscardPile;
 };
 
 #endif // CONTROLL_H
