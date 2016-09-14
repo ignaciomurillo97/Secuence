@@ -89,6 +89,11 @@ void CardArrayList::clear()
     delete[]elements;
 }
 
+int CardArrayList::getMax() const
+{
+    return max;
+}
+
 CardArrayList::~CardArrayList()
 {
     size=0;

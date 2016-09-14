@@ -18,7 +18,11 @@ SOURCES += main.cpp \
     tablero.cpp \
     deckstack.cpp \
     imagencarta.cpp \
-    token.cpp
+    token.cpp \
+    jugador.cpp \
+    playercirclelist.cpp \
+    cardarraylist.cpp \
+    button.cpp
 
 HEADERS  += \
     controll.h \
@@ -26,7 +30,11 @@ HEADERS  += \
     tablero.h \
     deckstack.h \
     imagencarta.h \
-    token.h
+    token.h \
+    jugador.h \
+    playercirclelist.h \
+    cardarraylist.h \
+    button.h
 
 FORMS    +=
 

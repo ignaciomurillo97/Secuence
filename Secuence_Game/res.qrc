@@ -2,6 +2,13 @@
     <qresource prefix="/img">
         <file>Recurcion_1.png</file>
         <file>Fondo.png</file>
+        <file>2Players.png</file>
+        <file>3Players.png</file>
+        <file>4Players.png</file>
+        <file>StartGame.png</file>
+        <file>ExitGame.png</file>
+        <file>MainMenu.png</file>
+        <file>BcakGround2.png</file>
     </qresource>
     <qresource prefix="/Cartas">
         <file>naipes/2_of_clubs.png</file>

@@ -13,9 +13,9 @@ class DeckStack : public QObject
 public:
     DeckStack(int max = MAX_ELEMENTS);
 
-    void push (Card * naipe);
-    Card * pop ();
-    Card * topValue();
+    void push (Naipe * naipe);
+    Naipe * pop ();
+    Naipe * topValue();
 
     int getSize() const;
     int getPosX() const;
@@ -25,7 +25,7 @@ public:
     void shuffle();    
 
 private:
-    Card** cardArray;
+    Naipe** cardArray;
 
     int size;
     int topCard;

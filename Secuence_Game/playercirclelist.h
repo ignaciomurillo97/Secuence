@@ -8,6 +8,7 @@ class playerCircleList : public CardArrayList
 {
 public:
     playerCircleList(int pmax);
+    playerCircleList();
     void append(Jugador* player);
     void next();
     void previous();

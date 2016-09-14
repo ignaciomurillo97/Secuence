@@ -8,6 +8,11 @@ playerCircleList::playerCircleList(int pmax)
     pos = 0;
 }
 
+playerCircleList::playerCircleList()
+{
+
+}
+
 void playerCircleList::append(Jugador* player)
 {
     elements[size]=player;

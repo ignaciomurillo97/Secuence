@@ -1,6 +1,5 @@
 #include "tablero.h"
 
-//extern Controll * game;
 
 Tablero::Tablero()
 {
@@ -40,7 +39,6 @@ void Tablero::fillBoard(QGraphicsScene * scene, int offsetX, int offsetY)
             scene->addItem(cartaActual);
         }
     }
-
 }
 
 void Tablero::addToken(int x, int y, QString owner, QString Url)

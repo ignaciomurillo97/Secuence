@@ -11,35 +11,58 @@
 
 // clases del juego
 #include "naipe.h"
+#include "button.h"
 #include "tablero.h"
+#include "jugador.h"
 #include "deckstack.h"
 #include "imagencarta.h"
+#include "cardarraylist.h"
+#include "playercirclelist.h"
 
 class Controll : public QGraphicsView
-{
+{        
+    Q_OBJECT
 public:
     Controll();
     QGraphicsScene* getScene();
 
-    void pickupCard (Card * naipe);
+    void pickupCard (Naipe * naipe);
     void clickTablero(CardImage * cartaSeleccionada);
-    void placeCard (Card * newCard);
+    void placeCard (Naipe * newCard);
     void returnCardToHand ();
     void fillDeck(DeckStack * deck);    
     void removeDiscardPile();
-    void showTopDiscardPile(Card * cartaAMostrar);
+    void showTopDiscardPile(Naipe * cartaAMostrar);
+    void startGame();
+    bool checkWin();
+    void showHand(Jugador* player);
 
     void mouseMoveEvent(QMouseEvent *event);
 
+
+public slots:
+    void setTwoPlayers();
+    void setThreePlayers();
+    void setFourPlayers();
+    void choosePlayerScreen();
+
 private:
     QGraphicsScene * scene;
-    Card * draggingItem;
+
+    int playerCount;
+    playerCircleList* playerList;
+    int maxCardsPerPlayer;
+
+    Naipe * draggingItem;
     int draggingItemPosX;
     int draggingItemPosY;
+
     Tablero * gameBoard;
+
     DeckStack * deck;
     DeckStack * discardPile;
-    Card * topDiscardPile;
+    Naipe * topDiscardPile;
+    CardArrayList * mano;
 };
 
 #endif // CONTROLL_H

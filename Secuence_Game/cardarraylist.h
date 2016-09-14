@@ -23,7 +23,9 @@ class CardArrayList
         Naipe* remove();
         void print();
         void clear();
-    protected:
+        int getMax() const;
+
+protected:
         int size;
         int max;
         int pos;

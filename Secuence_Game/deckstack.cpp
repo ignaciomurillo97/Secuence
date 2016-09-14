@@ -7,7 +7,7 @@ extern Controll * game;
 
 DeckStack::DeckStack(int max)
 {
-    cardArray = new Card*[max];
+    cardArray = new Naipe*[max];
     showingCard = -1;
     topCard = -1;
     size = 0;
@@ -16,22 +16,22 @@ DeckStack::DeckStack(int max)
     this->posY = 0;
 }
 
-void DeckStack::push(Card *naipe)
+void DeckStack::push(Naipe *naipe)
 {
     cardArray[size] = naipe;
     topCard = size;
     size ++;
 }
 
-Card *DeckStack::pop()
+Naipe *DeckStack::pop()
 {
-    Card *tmp = cardArray[size - 1];
+    Naipe *tmp = cardArray[size - 1];
     cardArray[size - 1] = NULL;
     size --;
     return tmp;
 }
 
-Card *DeckStack::topValue()
+Naipe *DeckStack::topValue()
 {
     return cardArray[topCard];
 }
