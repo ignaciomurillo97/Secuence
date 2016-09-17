@@ -44,6 +44,25 @@ void CardArrayList::setValue(int x, Naipe *value)
     elements[x] = value;
 }
 
+int CardArrayList::findElement(Naipe *value)
+{
+    for (int i = 0; i < size; i++)
+    {
+        //qDebug() << elements[i];
+        /*
+        qDebug() << QString("0x%1").arg((quintptr)elements[i],
+                                        QT_POINTER_SIZE * 2, 16, QChar('0'));
+        qDebug() << QString("0x%1").arg((quintptr)value,
+                                        QT_POINTER_SIZE * 2, 16, QChar('0'));
+                                        */
+        if (elements[i] == value)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 
 int CardArrayList::getSize()
 {
@@ -74,11 +93,21 @@ void CardArrayList::previous(){
 Naipe* CardArrayList::remove()
 {
     Naipe* deletedElement=elements[pos];
-        for (int i=pos; i<size; i++){
-            elements[i]=elements[i+1];
-        }
-        size--;
-        return (deletedElement);
+    for (int i=pos; i<size; i++){
+        elements[i]=elements[i+1];
+    }
+    size--;
+    return (deletedElement);
+}
+
+Naipe *CardArrayList::remove(int index)
+{
+    Naipe* deletedElement=elements[index];
+    for (int i=index; i<size; i++){
+        elements[i]=elements[i+1];
+    }
+    size--;
+    return (deletedElement);
 }
 
 

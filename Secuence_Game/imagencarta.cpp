@@ -14,6 +14,9 @@ CardImage::CardImage(QString Url, int posX, int posY, int scale, float rotation)
     this->setScale(scale);
     this->setRotation(rotation);
 
+    this->posX = posX;
+    this->posY = posY;
+
     setPos(posX, posY);
     setAcceptHoverEvents(true);
     setFlag(QGraphicsItem::ItemIsFocusable);
@@ -26,6 +29,9 @@ CardImage::CardImage(QString Url, int posX, int posY)
     this->palo = palo;
     this->placed = true;
     this->Url = Url;
+
+    this->posX = posX;
+    this->posY = posY;
 
     setPos(posX, posY);
     setAcceptHoverEvents(true);
@@ -62,7 +68,7 @@ QString CardImage::getUrl()
 
 void CardImage::setScale(float scale)
 {
-    setPixmap(this->pixmap().scaledToHeight(scale));
+    setPixmap(this->pixmap().scaled(scale * 0.6, scale, Qt::IgnoreAspectRatio, Qt::FastTransformation));
 }
 
 void CardImage::setPlaced(bool value)
@@ -70,9 +76,34 @@ void CardImage::setPlaced(bool value)
     this->placed = value;
 }
 
+void CardImage::setIndice(int x, int y)
+{
+    this->indiceX = x;
+    this->indiceY = y;
+}
+
 void CardImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    game->clickTablero(this);
-    qDebug() << "click tablero !!";
+    game->clickTablero(this);    
+}
+
+int CardImage::getPosX() const
+{
+    return posX;
+}
+
+int CardImage::getPosY() const
+{
+    return posY;
+}
+
+int CardImage::getIndiceX() const
+{
+    return indiceX;
+}
+
+int CardImage::getIndiceY() const
+{
+    return indiceY;
 }
 

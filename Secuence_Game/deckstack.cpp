@@ -54,6 +54,35 @@ void DeckStack::setPos(int x, int y)
     this->posY = y;
 }
 
+void DeckStack::shuffle()
+{
+    srand(time(NULL));
+    for (int i = 0; i < size; i++)
+    {
+        swap(i, rand() % size);
+    }
+}
+
+bool DeckStack::isEmpty()
+{
+    return size==0;
+}
+
+void DeckStack::refillDeck(DeckStack *decktoFillFrom)
+{
+    for (int i = 0 ; i<decktoFillFrom->getSize()-1 ; i++ ){
+        this->push(decktoFillFrom->pop());
+    }
+    this->shuffle();
+}
+
+void DeckStack::swap(int pos1, int pos2)
+{
+    Naipe* tmp = cardArray[pos1];
+    cardArray[pos1] = cardArray[pos2];
+    cardArray[pos2] = tmp;
+}
+
 int DeckStack::getPosX() const
 {
     return posX;

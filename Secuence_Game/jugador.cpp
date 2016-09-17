@@ -20,3 +20,9 @@ CardArrayList *Jugador::getHand() const
     return hand;
 }
 
+QString Jugador::getName() const
+{
+    //qDebug() << "nombre actual" << name;
+    return name;
+}
+

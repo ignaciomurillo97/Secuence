@@ -1,8 +1,9 @@
 #ifndef DECKSTACK_H
 #define DECKSTACK_H
 
+#include <stdlib.h>
 #include <QObject>
-
+#include <time.h>
 #include "naipe.h"
 
 #define MAX_ELEMENTS 54
@@ -22,8 +23,10 @@ public:
     int getPosY() const;
 
     void setPos(int x, int y);
-    void shuffle();    
-
+    void shuffle();
+    bool isEmpty();
+    void refillDeck(DeckStack* decktoFill);
+    void swap(int pos1, int pos2);
 private:
     Naipe** cardArray;
 

@@ -21,22 +21,15 @@ void playerCircleList::append(Jugador* player)
 
 void playerCircleList::next()
 {
-    if (pos==size){
-        pos = 0;
-    }
-    else{
-        pos++;
-    }
+    pos = (pos + 1) % size;    
 }
 
 void playerCircleList::previous()
 {
-    if (pos==0){
-        pos = size;
-    }
-    else{
-        pos--;
-    }
+    if (pos == 0)
+        pos = size - 1;
+    else
+        pos --;
 }
 
 Jugador* playerCircleList::remove()

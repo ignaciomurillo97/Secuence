@@ -3,6 +3,7 @@
 
 // clases de Qt
 #include <QGraphicsSceneMouseEvent>
+#include <QGraphicsTextItem>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QMouseEvent>
@@ -10,10 +11,12 @@
 
 
 // clases del juego
+#include "playeraction.h"
 #include "naipe.h"
 #include "button.h"
 #include "tablero.h"
 #include "jugador.h"
+#include "undopile.h"
 #include "deckstack.h"
 #include "imagencarta.h"
 #include "cardarraylist.h"
@@ -28,15 +31,21 @@ public:
 
     void pickupCard (Naipe * naipe);
     void clickTablero(CardImage * cartaSeleccionada);
-    void placeCard (Naipe * newCard);
+    void placeCardOnDiscardPile (Naipe * newCard);
     void returnCardToHand ();
     void fillDeck(DeckStack * deck);    
     void removeDiscardPile();
     void showTopDiscardPile(Naipe * cartaAMostrar);
     void startGame();
-    bool checkWin();
+    void removeCardFromHand(Naipe * selectedCard);
+    void placeCard(CardImage *selectedCard);
+    void placeCard(CardImage *selectedCard, QString owner);
+    void removeToken(CardImage *selectedCard);
+    void checkWin(CardImage * selectedCard);
     void showHand(Jugador* player);
-
+    void removeHand(Jugador*  player);    
+    void showCurrPlayerName();
+    void showWinScreen();
     void mouseMoveEvent(QMouseEvent *event);
 
 
@@ -45,12 +54,18 @@ public slots:
     void setThreePlayers();
     void setFourPlayers();
     void choosePlayerScreen();
+    void nextPlayer();
+    void previousPlayer();
+    void undoLastAction ();
+    void redoLastAction ();
 
 private:
     QGraphicsScene * scene;
 
     int playerCount;
     playerCircleList* playerList;
+    Jugador* currPlayer;
+    QGraphicsTextItem * currPlayerNameItem;
     int maxCardsPerPlayer;
 
     Naipe * draggingItem;
@@ -63,6 +78,9 @@ private:
     DeckStack * discardPile;
     Naipe * topDiscardPile;
     CardArrayList * mano;
+
+    UndoPile * undoPile;
+    UndoPile * redoPile;
 };
 
 #endif // CONTROLL_H

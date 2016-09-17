@@ -7,6 +7,7 @@ Token::Token(QString Url, int posX, int posY, QString owner)
     setPos(posX, posY);
     setAcceptHoverEvents(true);
     setFlag(QGraphicsItem::ItemIsFocusable);
+    this->owner = owner;
 
 }
 

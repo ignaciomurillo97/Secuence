@@ -14,6 +14,8 @@ public:
 
     CardArrayList *getHand() const;
 
+    QString getName() const;
+
 private:
     QString name;
     CardArrayList* hand;

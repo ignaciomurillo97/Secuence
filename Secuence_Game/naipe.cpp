@@ -12,12 +12,12 @@ Naipe::Naipe(QString Url)
 
 void Naipe::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
-    setScale(60);   
+    setScale(largeCardSize);
 }
 
 void Naipe::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
-    setScale(50);
+    setScale(stdCardSize);
 }
 
 void Naipe::mousePressEvent(QGraphicsSceneMouseEvent *event)

@@ -9,6 +9,14 @@
         <file>ExitGame.png</file>
         <file>MainMenu.png</file>
         <file>BcakGround2.png</file>
+        <file>token.png</file>
+        <file>untitled.png</file>
+        <file>Token1.png</file>
+        <file>Token2.png</file>
+        <file>Token3.png</file>
+        <file>Token4.png</file>
+        <file>casino_card_background_wallpaper_hd_1920x1080_by_giozaga-d7intx0-1.jpg</file>
+        <file>win-backgrounds.png</file>
     </qresource>
     <qresource prefix="/Cartas">
         <file>naipes/2_of_clubs.png</file>

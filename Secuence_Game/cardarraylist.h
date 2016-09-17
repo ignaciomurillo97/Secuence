@@ -1,6 +1,7 @@
 #ifndef ARRAYLIST_H
 #define ARRAYLIST_H
 #include "naipe.h"
+#include <QDebug>
 
 class CardArrayList
 {
@@ -11,6 +12,7 @@ class CardArrayList
         Naipe* getValue();
         Naipe* getValue(int x);
         void setValue(int x, Naipe* value);
+        int findElement(Naipe * value);
         int getPos();
         int getSize();
         void gotoStart();
@@ -21,6 +23,7 @@ class CardArrayList
         void append(Naipe* pElement);
         void insert(Naipe* pElement);
         Naipe* remove();
+        Naipe* remove(int index);
         void print();
         void clear();
         int getMax() const;

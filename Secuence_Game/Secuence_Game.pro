@@ -22,7 +22,9 @@ SOURCES += main.cpp \
     jugador.cpp \
     playercirclelist.cpp \
     cardarraylist.cpp \
-    button.cpp
+    button.cpp \
+    undopile.cpp \
+    playeraction.cpp
 
 HEADERS  += \
     controll.h \
@@ -34,7 +36,9 @@ HEADERS  += \
     jugador.h \
     playercirclelist.h \
     cardarraylist.h \
-    button.h
+    button.h \
+    undopile.h \
+    playeraction.h
 
 FORMS    +=
 

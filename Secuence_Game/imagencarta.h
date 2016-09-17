@@ -10,7 +10,8 @@
 #include <QTransform>
 #include <QBrush>
 
-
+#define stdCardSize 80
+#define largeCardSize 100
 
 class CardImage : public QObject, public QGraphicsPixmapItem
 {
@@ -25,14 +26,27 @@ public:
     QString getUrl();
     void setScale (float scale);
     void setPlaced (bool value);
+    void setIndice(int x, int y);
 
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    int getIndiceX() const;
+    int getIndiceY() const;
+
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);    
+
+    int getPosX() const;
+    int getPosY() const;
 
 protected:
     int valor;
     bool placed;
-    QString palo;
+    QString palo;    
     QString Url;
+
+    int indiceX;
+    int indiceY;
+
+    int posX;
+    int posY;
 };
 
 
